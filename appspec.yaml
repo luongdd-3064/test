@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: "arn:aws:ecs:ap-northeast-2:221877401369:task-definition/httpd-fg-task:6"
         LoadBalancerInfo:
           ContainerName: "httpd-fg-container"
           ContainerPort: 80
