@@ -1,11 +1,22 @@
+# version: 0.0
+# Resources:
+#   - TargetService:
+#       Type: AWS::ECS::Service
+#       Properties:
+#         TaskDefinition: "<TASK_DEFINITION>"
+#         LoadBalancerInfo:
+#           ContainerName: "$CONTAINER_NAME"
+#           ContainerPort: "$CONTAINER_PORT"
+#         PlatformVersion: "LATEST"
+
 version: 0.0
 Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-northeast-2:221877401369:task-definition/httpd-fg-task:6"
+        TaskDefinition: "arn:aws:ecs:ap-northeast-2:221877401369:task-definition/httpd-taskdefinition:2"
         LoadBalancerInfo:
-          ContainerName: "httpd-fg-container"
+          ContainerName: "httpd"
           ContainerPort: 80
 # Optional properties
         PlatformVersion: "LATEST"
