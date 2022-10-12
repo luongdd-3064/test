@@ -12,11 +12,16 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REPOSITORY_REGISTRY}
       - docker pull ${REPOSITORY_URI}:latest || true
+      - ls -l 
   build:
     commands:
+      - cat Dockerfile.dev
+      - docker -v
+      - ls -l
+      - echo $REPOSITORY_REGISTRY
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -f ./Dockerfile.dev --no-cache --build-arg SKIP_INSTALL_SCRIPT_ON_DOCKER_BUILD=true -t ${REPOSITORY_URI}:latest .
+      - docker build -f ./Dockerfile.${ENVIRONMENT} --no-cache --build-arg SKIP_INSTALL_SCRIPT_ON_DOCKER_BUILD=true -t ${REPOSITORY_URI}:latest .
       - docker tag ${REPOSITORY_URI}:latest ${REPOSITORY_URI}:${IMAGE_TAG}
   post_build:
     commands:

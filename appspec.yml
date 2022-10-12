@@ -1,34 +1,10 @@
-# version: 0.0
-# Resources:
-#   - TargetService:
-#       Type: AWS::ECS::Service
-#       Properties:
-#         TaskDefinition: "<TASK_DEFINITION>"
-#         LoadBalancerInfo:
-#           ContainerName: "$CONTAINER_NAME"
-#           ContainerPort: "$CONTAINER_PORT"
-#         PlatformVersion: "LATEST"
-
 version: 0.0
 Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-northeast-2:221877401369:task-definition/httpd-taskdefinition:2"
+        TaskDefinition: "<TASK_DEFINITION>"
         LoadBalancerInfo:
-          ContainerName: "httpd"
-          ContainerPort: 80
-# Optional properties
+          ContainerName: "$CONTAINER_NAME"
+          ContainerPort: "$CONTAINER_PORT"
         PlatformVersion: "LATEST"
-        NetworkConfiguration:
-          AwsvpcConfiguration:
-            Subnets: ["subnet-0175cf7265951aa77","subnet-0fae59bf8549c0f58","subnet-024766ace08c67d65","subnet-04673509c66e14f43"]
-            SecurityGroups: ["sg-031420604e511be3e"]
-            AssignPublicIp: "ENABLED"
-        CapacityProviderStrategy:
-          - Base: 1
-            CapacityProvider: "FARGATE_SPOT"
-            Weight: 2
-          - Base: 0
-            CapacityProvider: "FARGATE"
-            Weight: 1

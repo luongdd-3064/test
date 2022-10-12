@@ -5,9 +5,10 @@
   ],
   "family": "$TASK_FAMILY",
   "executionRoleArn": "$executionRoleArn",
+  "taskRoleArn": "$taskRoleArn",
   "containerDefinitions": [
     {
-      "image": "221877401369.dkr.ecr.ap-northeast-2.amazonaws.com/httpd:ad97377",
+      "image": "<IMAGE1_NAME>",
       "name": "$CONTAINER_NAME",
       "mountPoints": [],
       "logConfiguration": {
@@ -23,7 +24,7 @@
         {
           "protocol": "tcp",
           "containerPort": $CONTAINER_PORT,
-          "hostPort": 80
+          "hostPort": $HOST_PORT
         }
       ],
       "environment": [],
